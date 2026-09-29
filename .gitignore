@@ -35,3 +35,23 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+
+# Terraform variable files containing potentially sensitive values
+*.tfvars
+*.tfvars.json
+
+# Terraform plan files
+*.tfplan
+*.plan
+
+# Terraform lock file — usually KEEP this tracked
+# .terraform.lock.hcl
+/terraform/.terraform/
+
