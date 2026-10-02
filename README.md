@@ -37,6 +37,7 @@ docker run -d --name dd-agent \
 -v /proc/:/host/proc/:ro \
 -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
 -v /var/lib/docker/containers:/var/lib/docker/containers:ro \
+-p 8125:8125/udp \
 registry.datadoghq.com/agent:7
 ```
 

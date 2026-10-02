@@ -1,5 +1,6 @@
 package com.aryak.gradle.utils;
 
+import com.timgroup.statsd.Event;
 import com.timgroup.statsd.StatsDClient;
 import org.springframework.stereotype.Component;
 
@@ -35,5 +36,22 @@ public class MetricsExporter {
                 "env:local",
                 "service:orderservice"
         );
+    }
+
+    public void sampleCode() {
+//        statsd.incrementCounter("example_metric.increment", new String[]{"environment:dev"});
+//        statsd.decrementCounter("example_metric.decrement", new String[]{"environment:dev"});
+//        statsd.count("example_metric.count", 2, new String[]{"environment:dev"});
+    }
+
+    public void recordFailedRequest() {
+        Event event = Event.builder()
+                .withAlertType(Event.AlertType.ERROR)
+                //.withDate(Instant.now().getEpochSecond())
+                .withTitle("Order request failed")
+                .withText("An order request has failed in the local environment.")
+                .build();
+
+        statsd.recordEvent(event);
     }
 }
