@@ -1,17 +1,16 @@
-package com.aryak.gradle.metrics;
+package com.aryak.gradle.utils;
 
-import com.timgroup.statsd.NonBlockingStatsDClientBuilder;
 import com.timgroup.statsd.StatsDClient;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DatadogMetrics {
+public class MetricsExporter {
 
-    StatsDClient statsd = new NonBlockingStatsDClientBuilder()
-            .prefix("orderservice.")
-            .hostname("127.0.0.1")
-            .port(8125)
-            .build();
+    private final StatsDClient statsd;
+
+    public MetricsExporter(final StatsDClient statsd) {
+        this.statsd = statsd;
+    }
 
     public void orderProcessed() {
         statsd.incrementCounter(
@@ -25,6 +24,14 @@ public class DatadogMetrics {
         statsd.recordExecutionTime(
                 "orders.processing_time",
                 milliseconds,
+                "env:local",
+                "service:orderservice"
+        );
+    }
+
+    public void recordRequest() {
+        statsd.incrementCounter(
+                "orders.requests",
                 "env:local",
                 "service:orderservice"
         );

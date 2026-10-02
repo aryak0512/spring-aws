@@ -1,6 +1,6 @@
 package com.aryak.gradle.service;
 
-import com.aryak.gradle.metrics.DatadogMetrics;
+import com.aryak.gradle.utils.MetricsExporter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderService {
 
-    private final DatadogMetrics metrics;
+    private final MetricsExporter metrics;
 
-    public OrderService(DatadogMetrics metrics) {
+    public OrderService(MetricsExporter metrics) {
         this.metrics = metrics;
     }
 
