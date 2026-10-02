@@ -3,7 +3,7 @@ package com.aryak.gradle;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
@@ -11,6 +11,7 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 import java.nio.file.Path;
 
+@EnableScheduling
 @SpringBootApplication
 public class GradleApplication {
 
@@ -20,7 +21,7 @@ public class GradleApplication {
         SpringApplication.run(GradleApplication.class, args);
     }
 
-    @Bean
+    //@Bean
     public CommandLineRunner commandLineRunner() {
         return args -> {
 
