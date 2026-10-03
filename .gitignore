@@ -53,5 +53,5 @@ crash.*.log
 
 # Terraform lock file — usually KEEP this tracked
 # .terraform.lock.hcl
-/terraform/.terraform/
+/terraform/*/.terraform/
 
