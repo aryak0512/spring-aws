@@ -1,4 +1,4 @@
-# not mandatory for official providers, reqd only for partner
+# not mandatory for official providers, read only for partner
 # and community providers
 terraform {
   required_providers {
@@ -13,6 +13,13 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-resource "aws_security_group" "my-sg" {
+locals {
+  CreationDate = "date-${formatdate("YYYY-MM-DD", timestamp())}"
+}
 
+resource "aws_security_group" "my-sg" {
+  tags = {
+    Name         = "my-sg"
+    CreationDate = local.CreationDate
+  }
 }
