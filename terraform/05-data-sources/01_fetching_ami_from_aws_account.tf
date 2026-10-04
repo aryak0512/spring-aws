@@ -13,6 +13,15 @@ data "aws_ami" "my_ami" {
   owners      = ["099720109477"] // filter by ubuntu account owner
 }
 
+// using the above fetched ami to create an EC2 instance
+resource "aws_instance" "my_instance" {
+  ami           = data.aws_ami.my_ami.image_id
+  instance_type = "t2.micro"
+  tags = {
+    Name = "MyUbuntuInstance"
+  }
+}
+
 output "ami_id" {
   value = data.aws_ami.my_ami.image_id
 }
