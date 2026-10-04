@@ -1,0 +1,6 @@
+Tainting refers to recreating the resource in Terraform.
+Used when someone has manully made changes to the instance and stuff no longer works.
+Fresh/reinitialized resources are created when a resource is tainted.
+
+command:
+terraform apply -replace=<resource_name> (version > 0.15.2 )
