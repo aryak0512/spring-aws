@@ -2,7 +2,7 @@ name: My first test workflow
 on: workflow_dispatch # this allows for manual run
 jobs:
   my-first-job:
-    runs-on: ubuntu:latest # the runner
+    runs-on: ubuntu-latest # the runner
     steps:
       - name: Print greeting
         run: echo "Hello"
