@@ -1,0 +1,15 @@
+name: Build the project
+on: push # runs when a new commit is pushed to the repo
+jobs:
+  my-first-job:
+    runs-on: ubuntu-latest # the runner
+    steps:
+      - name: 'Get code'
+        uses: actions/checkout@v7
+      - name: 'Install Java 25 on the runner'
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: gradle
+      - run: gradle build
