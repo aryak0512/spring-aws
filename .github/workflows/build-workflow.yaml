@@ -27,3 +27,8 @@ jobs:
           java-version: '25'
       - name: 'Deploy to EC2'
         run: echo "Deployed to EC2...!"
+  printContextData:
+    runs-on: ubuntu-latest # the runner
+    steps:
+      - name: 'Prints the context data using expressions'
+        run: echo "${{ toJSON(github) }}"
