@@ -25,4 +25,9 @@ class SampleTest {
     void t4() {
         assertEquals(35, 32 + 3);
     }
+
+    @Test
+    void t5() {
+        assertEquals(5, 32 + 3);
+    }
 }
