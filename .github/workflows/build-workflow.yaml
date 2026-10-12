@@ -13,3 +13,5 @@ jobs:
           java-version: '25'
           cache: gradle
       - run: gradle build
+      - name: 'Run tests'
+        run: gradle test
