@@ -1,7 +1,7 @@
-name: Build the project
+name: Build and deploy the project to EC2
 on: [ "push", "workflow_dispatch" ] # runs when a new commit is pushed to the repo or manual
 jobs:
-  my-first-job:
+  build:
     runs-on: ubuntu-latest # the runner
     steps:
       - name: 'Get code'
@@ -11,7 +11,19 @@ jobs:
         with:
           distribution: temurin
           java-version: '25'
-          cache: gradle
       - run: gradle build
       - name: 'Run tests'
         run: gradle test
+  deploy:
+    needs: [ build ]
+    runs-on: ubuntu-latest # the runner
+    steps:
+      - name: 'Get code'
+        uses: actions/checkout@v7
+      - name: 'Install Java 25 on the runner'
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '25'
+      - name: 'Deploy to EC2'
+        run: echo "Deployed to EC2...!"

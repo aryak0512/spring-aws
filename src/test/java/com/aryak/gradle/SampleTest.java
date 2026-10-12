@@ -28,6 +28,6 @@ class SampleTest {
 
     @Test
     void t5() {
-        assertEquals(5, 32 + 3);
+        assertEquals(35, 32 + 3);
     }
 }
