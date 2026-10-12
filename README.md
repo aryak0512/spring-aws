@@ -88,3 +88,46 @@ logs:
 ```
 
 ![img.png](img.png)
+
+### Undoing unstaged changes
+
+```git restore . ``` -> resets all files in project to current branch's head
+```git restore  <file> ```-> resets the file in project to current branch's head
+```git clean -dn ```-> delete all new files with listing
+```git clean -df ```-> delete all new files
+
+#### Undoing commits
+
+```git reset --soft HEAD~1``` => go back one commit in current branch
+```git reset --soft HEAD~2``` => go back two commits in current branch
+
+### Retrieve lost branches and commits:
+
+```git reflog ```(30 day audit trail)
+
+1. For lost commit:
+   git checkout <commit id>
+
+2. For lost branch:
+   a. git checkout <commit id>
+   b. Create branch of this detached head
+
+### Merge types in Git
+
+1. Fast forward *
+2. Non-Fast forward
+   2a. Ours
+   2b. Octopus
+   2c. Recursive * [when main has move ahead in terms of commits before feature branch gets merged]
+   2d. Subtree
+
+* frequent core git
+
+```git merge --squash feature``` (combined all commits into a single commit whcih needs to be explicitly created by us)
+git merge by default is recursive
+
+#### Rebase
+
+- Rebase is appending commits from completed feature branch to the UPDATED master branch.
+- Rebase is used to incorporate commits in feature branch from the main branch
+- Rebase results in fast forward merge and never gives a merge commit
