@@ -1,5 +1,5 @@
 name: Build the project
-on: push # runs when a new commit is pushed to the repo
+on: [ "push", "workflow_dispatch" ] # runs when a new commit is pushed to the repo or manual
 jobs:
   my-first-job:
     runs-on: ubuntu-latest # the runner
