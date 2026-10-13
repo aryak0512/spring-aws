@@ -10,7 +10,7 @@ on:
       - 'feature/*'
   push:
     branches:
-      - 'main'
+      - main
       - 'feature/*'
     paths-ignore:
       - '.github/workflows/*'
