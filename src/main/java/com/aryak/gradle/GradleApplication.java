@@ -45,7 +45,7 @@ public class GradleApplication {
                         .build();
                 s3Client.getObject(getRequest, Path.of("here"));
             }
-
+            log.info("Ended");
         };
     }
 }
