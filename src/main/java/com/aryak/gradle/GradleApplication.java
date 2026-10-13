@@ -1,5 +1,6 @@
 package com.aryak.gradle;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +12,7 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 import java.nio.file.Path;
 
+@Slf4j
 @EnableScheduling
 @SpringBootApplication
 public class GradleApplication {
@@ -24,7 +26,7 @@ public class GradleApplication {
     //@Bean
     public CommandLineRunner commandLineRunner() {
         return args -> {
-
+            log.info("Started");
             try ( S3Client s3Client = S3Client.builder().region(Region.AP_SOUTH_1)
                     //.credentialsProvider(AwsCredentialsProvider)
                     .build() ) {
