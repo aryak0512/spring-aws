@@ -12,8 +12,8 @@ on:
     branches:
       - main
       - 'feature/*'
-    paths-ignore:
-      - '.github/workflows/*'
+#    paths-ignore:
+#      - '.github/workflows/*'
 
 # actual jobs definition, this has 3 jobs
 jobs:
@@ -33,6 +33,7 @@ jobs:
       - name: 'Create artifacts'
         uses: actions/upload-artifact@v7
         with:
+          name: jar-file
           path: |
             build/libs/*-SNAPSHOT.jar
             reports/tests/index.html
@@ -43,7 +44,7 @@ jobs:
       - name: 'Download artifacts'
         uses: actions/download-artifact@v7
         with:
-          name: 'Create artifacts'
+          name: jar-file
       - name: 'List contents'
         run: ls
       - name: 'Get code'
