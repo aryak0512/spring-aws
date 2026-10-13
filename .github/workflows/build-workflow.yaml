@@ -40,6 +40,12 @@ jobs:
     needs: [ build ]
     runs-on: ubuntu-latest # the runner
     steps:
+      - name: 'Download artifacts'
+        uses: actions/download-artifact@v7
+        with:
+          name: 'Create artifacts'
+      - name: 'List contents'
+        run: ls
       - name: 'Get code'
         uses: actions/checkout@v7
       - name: 'Install Java 25 on the runner'
